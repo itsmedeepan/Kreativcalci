@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepan's Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #04bef7, #f709f7);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+        .calculator {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(101, 93, 93, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            padding: 20px;
+            transform-style: preserve-3d;
+        }
+        .display {
+            background-color: rgba(15, 15, 15, 0.8);
+            color: #f9f6f6;
+            text-align: right;
+            padding: 20px;
+            font-size: 2.5em;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.3);
+            transform: translateZ(10px);
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+        .btn {
+            background: linear-gradient(to bottom, #9d05f5,  #01322e);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(251, 250, 250, 0.2);
+            transition: all 0.2s ease;
+            transform: translateZ(5px);
+        }
+        .btn:hover {
+            background: linear-gradient(to bottom, #d404f9, #01322e);
+            transform: translateZ(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn:active {
+            background: linear-gradient(to bottom, #060505, #191818);
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.3);
+            transform: translateZ(2px);
+        }
+        .btn.operator {
+            background: linear-gradient(to bottom, #191818, #191818);
+            color: white;
+        }
+        .btn.operator:hover {
+            background: linear-gradient(to bottom, #a402f4, #cb03f3);
+            color: black;
+        }
+        .btn.operator:active {
+            background: linear-gradient(to bottom, #191818, #191818);
+        }
+        .btn.equals {
+            background: linear-gradient(to bottom, #191818, #191818);
+            color: white;
+            grid-column: span 2;
+        }
+        .btn.equals:hover {
+            background: linear-gradient(to bottom, #a402f4, #cb03f3);
+            color: black;
+        }
+        .btn.equals:active {
+            background: linear-gradient(to bottom, #a402f4, #cb03f3);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="btn" onclick="clearDisplay()">C</button>
+            <button class="btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn operator" onclick="appendToDisplay('/')">/</button>
+            <button class="btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn operator" onclick="appendToDisplay('*')">*</button>
+            <button class="btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn" onclick="appendToDisplay('3')">3</button>
+            <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+            <button class="btn" onclick="appendToDisplay('0')">0</button>
+            <button class="btn" onclick="appendToDisplay('.')">.</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+            <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+        </div>
+    </div>
+    <script>
+        function appendToDisplay(value) {
+            const display = document.getElementById('display');
+            if (display.innerText === '0' && value !== '.') {
+                display.innerText = value;
+            } else {
+                display.innerText += value;
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').innerText = '0';
+        }
+
+        function calculate() {
+            const display = document.getElementById('display');
+            try {
+                display.innerText = eval(display.innerText);
+            } catch (e) {
+                display.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
