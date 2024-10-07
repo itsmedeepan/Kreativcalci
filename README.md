@@ -18,7 +18,8 @@ This is a simple calculator web application built using HTML, CSS, and JavaScrip
 
 **Screenshot**
 
-![{A9ECA3AF-DC36-4CEF-9ECA-BFAB3EAB22CF}](https://github.com/user-attachments/assets/1ae4e93d-08ff-41c4-8e8d-8dc34e624a31)
+![{DD9287BC-45E2-44A5-8AD5-D0E4E4A4C436}](https://github.com/user-attachments/assets/ab068620-7b95-45b3-8285-9ebf1b79c8a7)
+
 
 **Usage**
 
